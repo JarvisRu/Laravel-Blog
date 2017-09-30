@@ -6,7 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-
+        <!-- font awesome -->
+        <script src="https://use.fontawesome.com/39927f81ef.js"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -79,15 +80,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel Board
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <i class="fa fa-github" aria-hidden="true"></i>
+                    <a href="https://github.com/JarvisRu/Laravel-Blog">By NCUCC JarvisRu</a>
                 </div>
             </div>
         </div>
