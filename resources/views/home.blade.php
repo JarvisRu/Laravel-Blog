@@ -19,6 +19,14 @@
                    <a href="{{ url('home/add') }}">Add Now</a>
                 </div>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">All Post</div>
+
+                <div class="panel-body">
+
+                    test
+                </div>
+            </div>
         </div>
     </div>
 </div>
