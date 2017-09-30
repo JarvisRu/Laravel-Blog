@@ -14,8 +14,9 @@
                         </div>
                     @endif
 
-                    You are logged in!<br>You can add your own post!
-                    <button class="btn btn-primary">Add Now</button>
+                    You are logged in!<br>Adding your own post now!<hr>
+
+                   <a href="{{ url('home/add') }}">Add Now</a>
                 </div>
             </div>
         </div>
