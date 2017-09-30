@@ -18,7 +18,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <label for="title" class="col-md-4 control-label">E-Mail Address</label> 
+                            <label for="title" class="col-md-4 control-label">Title</label> 
                             <div class="col-md-6">
                                 <input id="title" name="title" type="text" placeholder="title" class="form-control input-md" required autufocus>    
                             </div>

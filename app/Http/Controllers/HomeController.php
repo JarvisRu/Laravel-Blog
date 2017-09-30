@@ -26,7 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // get all post
+        $allPost = Post::all();
+        return view('home',[
+            'allPost' => $allPost
+        ]);
     }
 
     // to addPost page 
@@ -48,6 +52,25 @@ class HomeController extends Controller
         // $post = Post::create($request->all());
 
         // go back to home
-        return view('home');
+        return redirect('home');
     }
+
+    // Action: View post
+    public function viewPost($id)
+    {
+        $this_post = Post::find($id);
+        return view('view',[
+            'this_post' => $this_post
+        ]);
+    }
+
+    // Action: delete post
+    public function destoryPost($id)
+    {
+        $this_post = Post::find($id);
+        $this_post->delete();
+        // go back to home
+        return redirect('home');
+    }
+
 }

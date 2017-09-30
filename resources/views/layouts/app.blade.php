@@ -7,6 +7,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style type="text/css">
+        .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+        }
+    </style>
     
 </head>
 <body>
@@ -24,7 +35,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/home') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -68,6 +79,9 @@
         </nav>
 
         @yield('content')
+        <div class="links text-center">
+            <a href="https://github.com/JarvisRu/Laravel-Blog"><i class="fa fa-github" aria-hidden="true"></i> JarvisRu</a>
+        </div>
     </div>
 
     <!-- Scripts -->
