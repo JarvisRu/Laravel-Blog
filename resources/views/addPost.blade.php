@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <form action="" id="" class="form-horizontal">
+                    <form action="{{ url('home') }}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
 
                         <div class="form-group">

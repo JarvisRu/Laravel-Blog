@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -27,8 +29,25 @@ class HomeController extends Controller
         return view('home');
     }
 
+    // to addPost page 
     public function goPost()
     {
         return view('addPost');
+    }
+
+    // Action: update post
+    public function update(Request $request)
+    {
+        // mothod 1
+        $post = new Post();
+        $post->name = Auth::user()->name;
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->save();
+        // method 2
+        // $post = Post::create($request->all());
+
+        // go back to home
+        return view('home');
     }
 }
