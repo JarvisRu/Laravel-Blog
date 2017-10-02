@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
 use Auth;
 
 class HomeController extends Controller
@@ -39,8 +40,12 @@ class HomeController extends Controller
         return view('addPost');
     }
 
+    // ===================================================
+    // post 
+    // ===================================================
+
     // Action: update post
-    public function update(Request $request)
+    public function updatePost(Request $request)
     {
         // mothod 1
         $post = new Post();
@@ -59,9 +64,11 @@ class HomeController extends Controller
     public function viewPost($id)
     {
         $this_post = Post::find($id);
+        $allComment = Comment::where('p_id','=',$id)->get();
         return view('view',[
-            'this_post' => $this_post
-        ]);
+                'this_post' => $this_post,
+                'allComment' => $allComment
+            ]);
     }
 
     // Action: delete post
@@ -71,6 +78,41 @@ class HomeController extends Controller
         $this_post->delete();
         // go back to home
         return redirect('home');
+    }
+
+    // ===================================================
+    // comment
+    // ===================================================
+    // Action: update Comment
+    public function updateComment(Request $request,$id)
+    {
+        $Comment = new Comment();
+        $Comment->name = Auth::user()->name;
+        $Comment->content = $request->content;
+        $Comment->p_id = $id;
+        $Comment->save();
+
+        // go back to this post
+        $this_post = Post::find($id);
+        $allComment = Comment::where('p_id','=',$id)->get();
+        return view('view',[
+                'this_post' => $this_post,
+                'allComment' => $allComment
+            ]);
+    }
+
+    // Action: delete Comment
+    public function destoryComment($id)
+    {
+        $this_Comment = Comment::find($id);
+        $this_Comment->delete();
+        // go back to this post
+        $this_post = Post::find($id);
+        $allComment = Comment::where('p_id','=',$id)->get();
+        return view('view',[
+                'this_post' => $this_post,
+                'allComment' => $allComment
+            ]);
     }
 
 }

@@ -18,7 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+// post
 Route::get('/home/add', 'HomeController@goPost')->name('post');
-Route::post('/home', 'HomeController@update');
+Route::post('/home', 'HomeController@updatePost');
 Route::get('/home/view_{id}', 'HomeController@viewPost')->name('view_{id}');
 Route::delete('/home/delete_{id}', 'HomeController@destoryPost');
+// comment
+Route::post('/home/view_{id}', 'HomeController@updateComment');
+Route::delete('/home/deleteC_{id}', 'HomeController@destoryComment');
