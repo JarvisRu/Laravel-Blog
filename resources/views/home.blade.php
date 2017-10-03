@@ -23,7 +23,12 @@
                 <div class="panel-body">
                     <!-- show post -->
                     @foreach($allPost as $item)
-                        <h2>{{$item->title}}</h2>
+                        <h2>
+                            @if($item->name==Auth::user()->name)
+                                <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+                            @endif
+                            {{$item->title}}
+                        </h2>
                         <p class="text-right"><i class="fa fa-clock-o" aria-hidden="true"></i> {{$item->created_at}}</p>
                         <p>{{$item->content}}</p>
                         <p class="text-right"><i class="fa fa-pencil" aria-hidden="true"></i> Post by <b>{{$item->name}}</b></p>

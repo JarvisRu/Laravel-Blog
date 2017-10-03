@@ -26,18 +26,24 @@
             <!-- comment content -->
             <div class="panel panel-default"> 
                 <div class="panel-heading">
-                    <h2> Reply</h2>
+                    <h2><i class="fa fa-comment-o" aria-hidden="true"></i> Reply</h2>
                 </div>
                 <div class="panel-body">
 
                     <!-- show all comment -->
                     @foreach($allComment as $item)
                         <div class="form-group">
-                          <label for="content" class="col-md-1 control-label"><i class="fa fa-user-o" aria-hidden="true"></i></label>
+                          <label for="content" class="col-md-1 control-label">
+                            @if($item->name==Auth::user()->name)
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            @else
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                            @endif
+                          </label>
                           <label for="content" class="col-md-1 control-label">{{$item->name}}</label>
                           <label for="content" class="col-md-8 control-label">：{{$item->content}}</label>
-                          @if($this_post->name==Auth::user()->name)
-                            <form action="deleteC_{{$item->id}}" method="POST" class="text-right">
+                          @if($item->name==Auth::user()->name)
+                            <form action="deleteC_{{$item->id}}_{{$this_post->id}}" method="POST" class="text-right">
                                 {{ csrf_field() }}
                                 {{method_field('DELETE')}}
                                 <div class="col-md-2">
@@ -55,7 +61,7 @@
                     <form action="view_{{$this_post->id}} " method="POST" >
                         {{ csrf_field() }}
                         <div class="form-group">
-                          <label for="content" class="col-md-1 control-label"><i class="fa fa-user-o" aria-hidden="true"></i></label>
+                          <label for="content" class="col-md-1 control-label"><i class="fa fa-user" aria-hidden="true"></i></label>
                           <label for="content" class="col-md-1 control-label">{{Auth::user()->name}}</label>
                           <div class="col-md-8">                     
                             <textarea class="form-control"  rows="1" id="content" name="content"></textarea>

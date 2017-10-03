@@ -25,4 +25,4 @@ Route::get('/home/view_{id}', 'HomeController@viewPost')->name('view_{id}');
 Route::delete('/home/delete_{id}', 'HomeController@destoryPost');
 // comment
 Route::post('/home/view_{id}', 'HomeController@updateComment');
-Route::delete('/home/deleteC_{id}', 'HomeController@destoryComment');
+Route::delete('/home/deleteC_{id}_{p_id}', 'HomeController@destoryComment');
