@@ -27,6 +27,16 @@
             <div class="panel panel-default"> 
                 <div class="panel-heading">
                     <h2><i class="fa fa-comment-o" aria-hidden="true"></i> Reply</h2>
+                    <!-- if error occur -->
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="panel-body">
 

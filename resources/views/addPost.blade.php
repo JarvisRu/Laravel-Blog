@@ -13,6 +13,16 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <!-- if error occur -->
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                     <form action="{{ url('home') }}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}

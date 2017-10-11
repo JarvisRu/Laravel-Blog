@@ -47,6 +47,12 @@ class HomeController extends Controller
     // Action: update post
     public function updatePost(Request $request)
     {
+        // validate
+        $request->validate([
+            'title' => 'required|string|max:15',
+            'content' => 'required|string|max:255',
+        ]);
+
         // mothod 1
         $post = new Post();
         $post->name = Auth::user()->name;
@@ -89,6 +95,11 @@ class HomeController extends Controller
     // Action: update Comment
     public function updateComment(Request $request,$id)
     {
+        // validate
+        $request->validate([
+            'content' => 'required|string|max:30',
+        ]);
+        // save it
         $Comment = new Comment();
         $Comment->name = Auth::user()->name;
         $Comment->content = $request->content;
