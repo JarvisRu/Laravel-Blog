@@ -82,11 +82,15 @@ class HomeController extends Controller
     {
         // del this post
         $this_post = Post::find($id);
-        $this_post->delete();
-        // del all comment of this post
-        Comment::where('p_id','=',$id)->delete();
-        // go back to home
-        return redirect('home');
+        // check auth
+        if(Auth::user()->name === $this_post->name){
+            $this_post->delete();
+            // del all comment of this post
+            Comment::where('p_id','=',$id)->delete();
+            // go back to home
+            return redirect('home');
+        }
+        
     }
 
     // ===================================================
@@ -119,7 +123,10 @@ class HomeController extends Controller
     public function destoryComment($id,$p_id)
     {
         $this_Comment = Comment::find($id);
-        $this_Comment->delete();
+        // check auth
+        if(Auth::user()->name === $this_Comment->name){
+            $this_Comment->delete();
+        }
         // go back to this post
         $this_post = Post::find($p_id);
         $allComment = Comment::where('p_id','=',$p_id)->get();
@@ -127,6 +134,7 @@ class HomeController extends Controller
                 'this_post' => $this_post,
                 'allComment' => $allComment
             ]);
+        
     }
 
 }
