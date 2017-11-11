@@ -17,12 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PostController@index')->name('home');
 // post
-Route::get('/home/add', 'HomeController@goPost')->name('post');
-Route::post('/home', 'HomeController@updatePost');
-Route::get('/home/view_{id}', 'HomeController@viewPost')->name('view_{id}');
-Route::delete('/home/delete_{id}', 'HomeController@destoryPost');
+Route::get('/home/add', 'PostController@goPost')->name('post');
+Route::post('/home', 'PostController@updatePost');
+Route::get('/home/view_{id}', 'PostController@viewPost')->name('view_{id}');
+Route::delete('/home/delete_{id}', 'PostController@destoryPost');
 // comment
-Route::post('/home/view_{id}', 'HomeController@updateComment');
-Route::delete('/home/deleteC_{id}_{p_id}', 'HomeController@destoryComment');
+Route::post('/home/view_{id}', 'CommentController@updateComment');
+Route::delete('/home/deleteC_{id}_{p_id}', 'CommentController@destoryComment');

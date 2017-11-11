@@ -12,8 +12,15 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
+
     public function testBasicTest()
     {
-        $this->assertTrue(true);
+        // $this->assertTrue(true);
+    	$response = $this->get('/');
+
+        $response->assertSeeText("Laravel Board");
+
+    	// $this->visit('/')
+    	// 	 ->see('Laravel Board');
     }
 }
