@@ -17,43 +17,31 @@ class CommentController extends Controller
     }
 
     // update Comment
-    public function updateComment(Request $request,$id)
+    public function updateComment(Request $request,Post $post)
     {
         // validate
         $request->validate([
             'content' => 'required|string|max:30',
         ]);
+
         // save it
-        $Comment = new Comment();
-        $Comment->name = Auth::user()->name;
-        $Comment->content = $request->content;
-        $Comment->p_id = $id;
-        $Comment->save();
+        $post->comments()->create([
+                'user_id' => $request->user()->id,
+                'content' => $request->content
+            ]);
 
         // go back to this post
-        $this_post = Post::find($id);
-        $allComment = Comment::where('p_id','=',$id)->get();
-        return view('view',[
-                'this_post' => $this_post,
-                'allComment' => $allComment
-            ]);
+        return redirect()->action('PostController@viewPost',['post'=>$post]);
     }
 
     // delete Comment
-    public function destoryComment($id,$p_id)
+    public function destoryComment(Post $post, Comment $comment)
     {
-        $this_Comment = Comment::find($id);
         // check auth
-        if(Auth::user()->name === $this_Comment->name){
-            $this_Comment->delete();
+        if(Auth::user()->id === $comment->user_id){
+            $comment->delete();
         }
         // go back to this post
-        $this_post = Post::find($p_id);
-        $allComment = Comment::where('p_id','=',$p_id)->get();
-        return view('view',[
-                'this_post' => $this_post,
-                'allComment' => $allComment
-            ]);
-        
+        return redirect()->action('PostController@viewPost',['post'=>$post]);
     }
 }

@@ -8,14 +8,14 @@
             <div class="panel panel-default"> 
                 <div class="panel-heading">
                     <h2> {{$this_post->title}}</h2>
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> {{$this_post->name}} <br>
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> {{$this_post->user->name}} <br>
                     <i class="fa fa-clock-o" aria-hidden="true"></i> {{$this_post->created_at}}
                 </div>
                 <div class="panel-body">
                     <p>{{$this_post->content}}</p>
                     <!-- delete post -->
-                    @if($this_post->name==Auth::user()->name)
-                        <form action="delete_{{$this_post->id}}" method="POST" class="text-right">
+                    @if($this_post->user->name==Auth::user()->name)
+                        <form action="../delete/{{$this_post->id}}" method="POST" class="text-right">
                             {{ csrf_field() }}
                             {{method_field('DELETE')}}
                             <button type="submit" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Delete</button>
@@ -50,10 +50,10 @@
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                             @endif
                           </label>
-                          <label for="content" class="col-md-1 control-label">{{$item->name}}</label>
+                          <label for="content" class="col-md-1 control-label">{{$item->user->name}}</label>
                           <label for="content" class="col-md-8 control-label">：{{$item->content}}</label>
-                          @if($item->name==Auth::user()->name)
-                            <form action="deleteC_{{$item->id}}_{{$this_post->id}}" method="POST" class="text-right">
+                          @if($item->user->name==Auth::user()->name)
+                            <form action="../deleteC/{{$item->post_id}}/{{$item->id}}" method="POST" class="text-right">
                                 {{ csrf_field() }}
                                 {{method_field('DELETE')}}
                                 <div class="col-md-2">
@@ -68,7 +68,7 @@
                     @endforeach
 
                     <!-- adding comment -->
-                    <form action="view_{{$this_post->id}} " method="POST" >
+                    <form action="../view/{{$this_post->id}} " method="POST" >
                         {{ csrf_field() }}
                         <div class="form-group">
                           <label for="content" class="col-md-1 control-label"><i class="fa fa-user" aria-hidden="true"></i></label>

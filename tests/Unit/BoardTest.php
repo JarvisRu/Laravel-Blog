@@ -2,18 +2,20 @@
 
 namespace Tests\Unit;
 
+
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use App\Post;
+use App\Comment;
 
 class BoardTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
+
+	use RefreshDatabase;
+
     public function testExample()
     {
-        $this->assertTrue(true);
+    	
     }
 }

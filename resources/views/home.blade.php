@@ -31,9 +31,9 @@
                         </h2>
                         <p class="text-right"><i class="fa fa-clock-o" aria-hidden="true"></i> {{$item->created_at}}</p>
                         <p>{{$item->content}}</p>
-                        <p class="text-right"><i class="fa fa-pencil" aria-hidden="true"></i> Post by <b>{{$item->name}}</b></p>
+                        <p class="text-right"><i class="fa fa-pencil" aria-hidden="true"></i> Post by <b>{{$item->user->name}}</b></p>
                         <!-- view post -->
-                        <a href="home/view_{{$item->id}}"><button class="btn btn-default">Read More</button></a>
+                        <a href="home/view/{{$item->id}}"><button class="btn btn-default">Read More</button></a>
                         <hr>
                     @endforeach
                 </div>

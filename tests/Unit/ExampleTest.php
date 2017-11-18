@@ -20,7 +20,5 @@ class ExampleTest extends TestCase
 
         $response->assertSeeText("Laravel Board");
 
-    	// $this->visit('/')
-    	// 	 ->see('Laravel Board');
     }
 }

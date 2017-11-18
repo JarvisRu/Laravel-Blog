@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Comment;
+use Auth;
 
 class PostController extends Controller
 {
@@ -19,7 +20,7 @@ class PostController extends Controller
 	public function index()
     {
         // get all post
-        $allPost = Post::all();
+        $allPost = Post::with('user')->get();
         return view('home',[
             'allPost' => $allPost
         ]);
@@ -40,40 +41,34 @@ class PostController extends Controller
             'content' => 'required|string|max:255',
         ]);
 
-        // mothod 1
-        $post = new Post();
-        $post->name = Auth::user()->name;
-        $post->title = $request->title;
-        $post->content = $request->content;
-        $post->save();
-        // method 2
-        // $post = Post::create($request->all());
+        $request->user()->posts()->create([
+                'user_id' => $request->user()->id,
+                'title' => $request->title,
+                'content' => $request->content
+            ]);
 
         // go back to home
         return redirect('home');
     }
 
     // view post
-    public function viewPost($id)
+    public function viewPost(Post $post)
     {
-        $this_post = Post::find($id);
-        $allComment = Comment::where('p_id','=',$id)->get();
+        $allComment = $post->comments()->with('user')->get();
         return view('view',[
-                'this_post' => $this_post,
+                'this_post' => $post,
                 'allComment' => $allComment
             ]);
     }
 
     // delete post
-    public function destoryPost($id)
+    public function destoryPost(Request $request,Post $post)
     {
-        // del this post
-        $this_post = Post::find($id);
         // check auth
-        if(Auth::user()->name === $this_post->name){
-            $this_post->delete();
+        if($request->user()->id === $post->id){
+            $post->delete();
             // del all comment of this post
-            Comment::where('p_id','=',$id)->delete();
+            $post->comments()->with('user')->delete();
             // go back to home
             return redirect('home');
         }

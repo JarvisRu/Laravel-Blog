@@ -21,8 +21,8 @@ Route::get('/home', 'PostController@index')->name('home');
 // post
 Route::get('/home/add', 'PostController@goPost')->name('post');
 Route::post('/home', 'PostController@updatePost');
-Route::get('/home/view_{id}', 'PostController@viewPost')->name('view_{id}');
-Route::delete('/home/delete_{id}', 'PostController@destoryPost');
+Route::get('/home/view/{post}', 'PostController@viewPost')->name('view/{post}');
+Route::delete('/home/delete/{post}', 'PostController@destoryPost');
 // comment
-Route::post('/home/view_{id}', 'CommentController@updateComment');
-Route::delete('/home/deleteC_{id}_{p_id}', 'CommentController@destoryComment');
+Route::post('/home/view/{post}', 'CommentController@updateComment');
+Route::delete('/home/deleteC/{post}/{comment}', 'CommentController@destoryComment');
