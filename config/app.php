@@ -177,6 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // for InvisibleReCaptcha
+        AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
+
     ],
 
     /*

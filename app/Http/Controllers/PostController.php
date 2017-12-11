@@ -68,7 +68,7 @@ class PostController extends Controller
         if($request->user()->id === $post->id){
             $post->delete();
             // del all comment of this post
-            $post->comments()->with('user')->delete();
+            $post->comments()->delete();
             // go back to home
             return redirect('home');
         }
