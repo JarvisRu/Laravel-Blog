@@ -24,7 +24,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ url('home') }}" method="POST" class="form-horizontal">
+                    <form action="{{ url('home') }}" method="POST" class="form-horizontal" id="form">
                         {{ csrf_field() }}
 
                         <div class="form-group">
@@ -43,18 +43,23 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                @captcha()
                                 <button type="submit" class="btn btn-primary">
                                     Post
                                 </button>
                                 <button type="reset" class="btn btn-danger">
                                     Reset
                                 </button>
-
                             </div>
                         </div>
-                        
+                        {!! app('captcha')->render(); !!}
                     </form>
+
+                <!-- testing as robot -->
+                <!-- <script>
+                    $(document).ready(function(){
+                        $('#form').submit();
+                    });
+                </script> -->
                     
                 </div>
             </div>

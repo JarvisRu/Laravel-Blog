@@ -35,11 +35,14 @@ class PostController extends Controller
     // update post
     public function updatePost(Request $request)
     {
+        
         // validate
-        $request->validate([
+        $request->validate([    
+            'g-recaptcha-response' => 'required|captcha',
             'title' => 'required|string|max:15',
             'content' => 'required|string|max:255',
         ]);
+
 
         $request->user()->posts()->create([
                 'user_id' => $request->user()->id,
