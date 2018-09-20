@@ -40,7 +40,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/home') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Software Engineering Practices
                     </a>
                 </div>
 
@@ -84,7 +84,7 @@
 
         @yield('content')
         <div class="links text-center">
-            <a href="https://github.com/JarvisRu/Laravel-Blog"><i class="fa fa-github" aria-hidden="true"></i> JarvisRu</a>
+            <a href="https://github.com/JarvisRu/Laravel-Blog"><i class="fa fa-github" aria-hidden="true"></i>By Group3</a>
         </div>
     </div>
 

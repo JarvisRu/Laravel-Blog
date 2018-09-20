@@ -85,7 +85,7 @@
 
                 <div class="links">
                     <i class="fa fa-github" aria-hidden="true"></i>
-                    <a href="https://github.com/JarvisRu/Laravel-Blog">By NCUCC JarvisRu</a>
+                    <a href="https://github.com/JarvisRu/Laravel-Blog">By Group3</a>
                 </div>
             </div>
         </div>
