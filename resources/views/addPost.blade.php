@@ -51,15 +51,7 @@
                                 </button>
                             </div>
                         </div>
-                        {!! app('captcha')->render(); !!}
                     </form>
-
-                <!-- testing as robot -->
-                <!-- <script>
-                    $(document).ready(function(){
-                        $('#form').submit();
-                    });
-                </script> -->
                     
                 </div>
             </div>

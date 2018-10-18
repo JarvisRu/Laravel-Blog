@@ -37,8 +37,7 @@ class PostController extends Controller
     {
         
         // validate
-        $request->validate([    
-            'g-recaptcha-response' => 'required|captcha',
+        $request->validate([
             'title' => 'required|string|max:15',
             'content' => 'required|string|max:255',
         ]);
