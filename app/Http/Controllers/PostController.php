@@ -67,7 +67,7 @@ class PostController extends Controller
     public function destoryPost(Request $request,Post $post)
     {
         // check auth
-        if($request->user()->id === $post->id){
+        if($request->user()->id === $post->user_id){
             $post->delete();
             // del all comment of this post
             $post->comments()->delete();
